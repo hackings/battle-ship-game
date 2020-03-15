@@ -82,6 +82,7 @@ public class BattleShipGame {
 	}
 
 	public void play(Scanner input) {
+		input.nextLine();
 		String[] locs = input.nextLine().split("\\ ");
 		this.player1Locations = new ArrayList<String>();
 		for (int i = 0; i < locs.length; i++) {
@@ -91,10 +92,9 @@ public class BattleShipGame {
 		locs = input.nextLine().split("\\ ");
 		this.player2Locations = new ArrayList<String>();
 		for (int i = 0; i < locs.length; i++) {
-			this.player1Locations.add(locs[i]);
+			this.player2Locations.add(locs[i]);
 		}
-
-		while (this.player1.allShipsDestroyed() || this.player2.allShipsDestroyed()) {
+		while (!this.player1.allShipsDestroyed() && !this.player2.allShipsDestroyed()) {
 			char[] charArr;
 			int x;
 			int y;
@@ -160,8 +160,8 @@ public class BattleShipGame {
 
 		public boolean allShipsDestroyed() {
 			boolean allDestroyed = true;
-			for (int i = 0; i < width; i++) {
-				for (int j = 0; j < height; j++) {
+			for (int i = 0; i < this.width; i++) {
+				for (int j = 0; j < this.height; j++) {
 					Cell cell = cells.get(i).get(j);
 					if (cell.cellType != 'M' && !cell.isDestroyed())
 						allDestroyed = false;
@@ -174,10 +174,10 @@ public class BattleShipGame {
 			Cell cell = cells.get(x).get(y);
 			// System.out.println(cell.toString());
 			if (cell.cellType != 'M') {
-				System.out.println("Fiing at - " + this.name + " location x-" + x + " y-" + y);
+				System.out.println("Fiing at - " + this.name + " location x:" + x + " y:" + y);
 				System.out.println("Suucessfully blasted!!");
 			} else {
-				System.out.println("Fiing at - " + this.name + " location x-" + x + " y-" + y);
+				System.out.println("Fiing at - " + this.name + " location x:" + x + " y:" + y);
 				System.out.println("Missed");
 
 			}
