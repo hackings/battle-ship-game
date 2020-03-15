@@ -15,6 +15,34 @@ public class BattleShipGame {
 	private ArrayList<String> player1Locations = new ArrayList<String>();
 	private ArrayList<String> player2Locations = new ArrayList<String>();
 
+	public static int getWidth() {
+		return width;
+	}
+
+	public static int getHeight() {
+		return height;
+	}
+
+	public static int getNoOfShips() {
+		return noOfShips;
+	}
+
+	public PlayerMap getPlayer1() {
+		return player1;
+	}
+
+	public PlayerMap getPlayer2() {
+		return player2;
+	}
+
+	public ArrayList<String> getPlayer1Locations() {
+		return player1Locations;
+	}
+
+	public ArrayList<String> getPlayer2Locations() {
+		return player2Locations;
+	}
+
 	public static void main(String[] args) throws Exception {
 		Scanner input = new Scanner(new File("./input.txt"));
 		BattleShipGame game = new BattleShipGame();
@@ -133,6 +161,10 @@ public class BattleShipGame {
 		private int width, height;
 		private String name;
 		private ArrayList<ArrayList<Cell>> cells = new ArrayList<ArrayList<Cell>>();
+
+		public ArrayList<ArrayList<Cell>> getCells() {
+			return cells;
+		}
 
 		public PlayerMap(String name, int width, int height) {
 			this.width = width;
